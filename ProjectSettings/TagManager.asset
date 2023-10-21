@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Collectable
+  - "Da\xF1o"
+  - ChangeLevel
+  - InitialScene
+  - EnterScene
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Suelo
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 1752552307
+    locked: 0
+  - name: BackgroundDetails
+    uniqueID: 2100552755
+    locked: 0
+  - name: Ground
+    uniqueID: 585278515
+    locked: 0
+  - name: GroundDetails
+    uniqueID: 147778393
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackgroundDetails Behind
+    uniqueID: 4204549867
+    locked: 0
