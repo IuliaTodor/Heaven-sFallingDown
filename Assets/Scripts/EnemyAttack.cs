@@ -11,9 +11,7 @@ public class Enemy : MonoBehaviour
     
     public GameObject projectile;
     public GameObject projectileParent;
-
     private Transform player;
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;   

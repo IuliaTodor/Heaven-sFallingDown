@@ -7925,6 +7925,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1970122173}
   - component: {fileID: 1970122172}
+  - component: {fileID: 1970122174}
   m_Layer: 0
   m_Name: SceneEnter
   m_TagString: EnterScene
@@ -7992,6 +7993,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1970122174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970122171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d84a6a2ff5021b40944e293838a1eb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newScene: Scene(0,0)
+  enterScene: {fileID: 1970122171}
+  exitScene: {fileID: 491418251}
 --- !u!1 &2036707330
 GameObject:
   m_ObjectHideFlags: 0

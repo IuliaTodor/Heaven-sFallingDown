@@ -9,6 +9,7 @@ TagManager:
   - ChangeLevel
   - InitialScene
   - EnterScene
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

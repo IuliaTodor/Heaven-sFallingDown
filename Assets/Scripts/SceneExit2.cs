@@ -19,13 +19,13 @@ public class SceneExit2 : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
 
-        if (goesBackToScene)
-        {
-            Debug.Log(player.transform.position);
-            Debug.Log(exitScene.transform.position);
+        //if (goesBackToScene)
+        //{
+        //    Debug.Log(player.transform.position);
+        //    Debug.Log(exitScene.transform.position);
 
-            player.transform.position = new Vector3(exitScene.transform.position.x, exitScene.transform.position.y, exitScene.transform.position.z);
-        }
+        //    player.transform.position = new Vector3(exitScene.transform.position.x, exitScene.transform.position.y, exitScene.transform.position.z);
+        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
