@@ -42,7 +42,7 @@ public class PlayerLife : MonoBehaviour
         checkpointPos = pos;
     }
 
-    private void Die()
+    public void Die()
     {
         deathSoundEffect.Play();
         //De esta forma el jugador no se podrá mover tras morir
@@ -63,7 +63,7 @@ public class PlayerLife : MonoBehaviour
         anim.enabled = false;
         sr.enabled = false;
 
-        yield return new WaitForSeconds(2f); // Adjust the duration as needed
+        yield return new WaitForSeconds(2f); 
 
         sr.enabled = true;
         anim.enabled = true;

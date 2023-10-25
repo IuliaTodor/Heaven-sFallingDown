@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class PlayerAimProjectile : MonoBehaviour
 {
     private GameObject player;
     private PlayerLife playerLife;
@@ -18,10 +18,15 @@ public class Projectile : MonoBehaviour
 
         Vector2 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
-
-
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            playerLife.Die();
+        }
+    }
     // Update is called once per frame
     void Update()
     {

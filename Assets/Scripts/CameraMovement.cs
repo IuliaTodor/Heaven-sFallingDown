@@ -4,12 +4,29 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public static CameraMovement instance;
     [SerializeField] private Transform target;
     //Cómo de rápido se mueve la cámara hacia el jugador
     [SerializeField] private float speed;
     [SerializeField] private Vector2 maxPosition;
     [SerializeField] private Vector2 minPosition;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        // Ensure that there's only one instance of the camera
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(this.gameObject); // Destroy any duplicate instances
+            return;
+        }
+
+        DontDestroyOnLoad(this.gameObject); // Keep this object when loading new scenes
+    }
     void Start()
     {
         if (target != null)

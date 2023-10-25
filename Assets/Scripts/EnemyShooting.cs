@@ -8,7 +8,7 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] Transform projectilePosition;
 
     private float timer;
-    private float maxTime = 1;
+    private float maxTime = 2;
 
     private GameObject player;
     private PlayerLife playerLife;
