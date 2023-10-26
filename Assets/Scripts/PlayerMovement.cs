@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] public float moveSpeed = 7f;
     [SerializeField] private float gravity = 3f;
-    [SerializeField] private bool isFlippedY;
+    [SerializeField] public bool isFlippedY;
+    [SerializeField] public bool isFlippedX;
     [SerializeField] private AudioSource gravitySoundEffect;
     public static PlayerMovement instance;
 

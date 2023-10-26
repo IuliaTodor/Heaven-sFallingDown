@@ -9,8 +9,14 @@ public class PlayerLife : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
+    private PlayerMovement pm;
+    [SerializeField] AnimationClip deathAnim;
 
     [SerializeField] private AudioSource deathSoundEffect;
+    private enum MovementState
+    {
+        idle //Idle = 0. Walk = 1. gravity = 2. midAir = 3
+    }
 
     private bool isAlive = true;
 
@@ -26,7 +32,7 @@ public class PlayerLife : MonoBehaviour
 
         checkpointPos = transform.position;
 
-        //playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>(); 
+        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>(); 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -45,34 +51,41 @@ public class PlayerLife : MonoBehaviour
     public void Die()
     {
         deathSoundEffect.Play();
-        //De esta forma el jugador no se podrá mover tras morir
-        //rb.bodyType = RigidbodyType2D.Static;
-       
+               
         isAlive = false;
+        rb.velocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Static;
+        anim.SetBool("isAlive", false);
         anim.SetTrigger("death");
-      
-        StartCoroutine(Respawn(2f));
+
+        StartCoroutine(Respawn(1.5f));
     }
 
 
 
     IEnumerator Respawn(float duration)
     {
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(deathAnim.length);
 
         anim.enabled = false;
         sr.enabled = false;
 
-        yield return new WaitForSeconds(2f); 
+        yield return new WaitForSeconds(duration);
+
+        rb.bodyType = RigidbodyType2D.Dynamic;
+
+
+        anim.SetInteger("state", (int)MovementState.idle);
 
         sr.enabled = true;
         anim.enabled = true;
+        sr.flipY = false;
+        rb.gravityScale = 3;
 
         transform.position = checkpointPos;
 
+        anim.SetBool("isAlive", true);
         isAlive = true;
-
-
-
+      
     }
 }

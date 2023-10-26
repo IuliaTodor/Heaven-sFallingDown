@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public static CameraMovement instance;
-    [SerializeField] private Transform target;
+    [SerializeField] private GameObject target;
     //Cómo de rápido se mueve la cámara hacia el jugador
     [SerializeField] private float speed;
     [SerializeField] private Vector2 maxPosition;
@@ -25,13 +25,15 @@ public class CameraMovement : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(this.gameObject); // Keep this object when loading new scenes
+        target = GameObject.FindWithTag("Player");
+
+        //DontDestroyOnLoad(this.gameObject); // Keep this object when loading new scenes
     }
     void Start()
     {
         if (target != null)
         {
-            transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
+            transform.position = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
         }
     }
 
@@ -41,9 +43,9 @@ public class CameraMovement : MonoBehaviour
     {
         if (target != null)
         {
-            if (transform.position != target.position)
+            if (transform.position != target.transform.position)
             {
-                Vector3 targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);
+                Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
 
                 targetPosition.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
                 targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
