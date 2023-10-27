@@ -15,15 +15,9 @@ public class SpawnPoint : MonoBehaviour
         player.transform.position = transform.position;
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDrawGizmos()
     {
-        
+        Gizmos.DrawCube(transform.position, new Vector3(0.5f, 1, 0));
     }
 }

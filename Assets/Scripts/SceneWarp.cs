@@ -34,4 +34,9 @@ public class SceneWarp : MonoBehaviour
             }
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, new Vector3(1,6,0));
+    }
 }

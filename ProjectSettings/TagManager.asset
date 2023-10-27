@@ -6,10 +6,8 @@ TagManager:
   tags:
   - Collectable
   - "Da\xF1o"
-  - ChangeLevel
-  - InitialScene
-  - EnterScene
   - Checkpoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -59,9 +57,9 @@ TagManager:
   - name: GroundDetails
     uniqueID: 147778393
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: BackgroundDetails Behind
     uniqueID: 4204549867
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

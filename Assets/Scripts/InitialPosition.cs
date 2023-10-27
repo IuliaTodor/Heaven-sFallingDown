@@ -7,7 +7,6 @@ public class InitialPosition : MonoBehaviour
 {
     private GameObject player;
     [SerializeField] private GameObject enterScene;
-    [SerializeField] private GameObject exitScene;
     public int pos;
     // Start is called before the first frame update
     void Start()

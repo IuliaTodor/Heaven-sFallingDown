@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 974bb650887050c419e2348c0686d3c6
+guid: f23ba23ee22b19447949fe580f93cfd9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,12 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Caminar_0
+      name: idle 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 14
+        width: 12
         height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -137,19 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a70f65a3ccce76248a4e3ba67854decf
-      internalID: 280987505
+      spriteID: 2f22deb8621f33b4ab92848633b93951
+      internalID: 144945725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Caminar_1
+      name: idle 1_1
       rect:
         serializedVersion: 2
-        x: 14
+        x: 12
         y: 0
-        width: 14
+        width: 12
         height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -158,19 +158,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 548d95dc5019ac241900ca785a7d3d9e
-      internalID: -1303783356
+      spriteID: 1b71dc869447993459c00009a8c3edee
+      internalID: -1069253513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Caminar_2
+      name: idle 1_2
       rect:
         serializedVersion: 2
-        x: 28
+        x: 24
         y: 0
-        width: 14
+        width: 12
         height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -179,19 +179,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90ac7ea9696228a44af0b4712f2b5f97
-      internalID: 118297013
+      spriteID: 520b5e851d8a34748bb16576b1eed920
+      internalID: -964406349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Caminar_3
+      name: idle 1_3
       rect:
         serializedVersion: 2
-        x: 42
+        x: 36
         y: 0
-        width: 14
+        width: 12
         height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3acf47fc9f93edb4383081b63154d482
-      internalID: 464503026
+      spriteID: dc473916775402d4db144c19c8288d11
+      internalID: -1788589197
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Caminar_0: 280987505
-      Caminar_1: -1303783356
-      Caminar_2: 118297013
-      Caminar_3: 464503026
+      idle 1_0: 144945725
+      idle 1_1: -1069253513
+      idle 1_2: -964406349
+      idle 1_3: -1788589197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

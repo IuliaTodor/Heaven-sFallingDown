@@ -21,4 +21,17 @@ public class CDsUI : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+
+    private void Update()
+    {
+        if(PauseMenu.GameIsPaused)
+        {
+            CDUI.SetActive(false);
+        }
+
+        else
+        {
+            CDUI.SetActive(true);
+        }
+    }
 }

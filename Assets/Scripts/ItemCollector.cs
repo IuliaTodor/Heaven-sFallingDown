@@ -6,8 +6,6 @@ using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    //private int CDs = 0;
-
     [SerializeField] private TMP_Text CDsText;
     [SerializeField] private AudioSource collectSoundEffect;
 
@@ -17,9 +15,9 @@ public class ItemCollector : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("ItemCollect");
             Destroy(collision.gameObject);
-            //collectSoundEffect.Play();
+
             GameManager.instance.CDs++;
-            //CDs++;
+
             if (CDsText != null)
             {
                 CDsText.text = "" + GameManager.instance.CDs;

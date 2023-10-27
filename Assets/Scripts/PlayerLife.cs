@@ -20,6 +20,7 @@ public class PlayerLife : MonoBehaviour
 
     private bool isAlive = true;
 
+    private GameObject[] enemies;
     public bool GetIsPlayerAlive()
     {
         return isAlive;
@@ -28,14 +29,24 @@ public class PlayerLife : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>(); 
+        sr = GetComponent<SpriteRenderer>();
 
         checkpointPos = transform.position;
 
-        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>(); 
+        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+
+        enemies = GameObject.FindGameObjectsWithTag("Daño");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Daño"))
+        {
+            Die();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Daño"))
         {
@@ -51,12 +62,18 @@ public class PlayerLife : MonoBehaviour
     public void Die()
     {
         deathSoundEffect.Play();
-               
+
         isAlive = false;
         rb.velocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetBool("isAlive", false);
         anim.SetTrigger("death");
+
+        foreach (GameObject enemy in enemies)
+        {
+            BoxCollider2D enemyBoxCollider = enemy.GetComponent<BoxCollider2D>();
+            enemyBoxCollider.enabled = false;
+        }
 
         StartCoroutine(Respawn(1.5f));
     }
@@ -74,6 +91,12 @@ public class PlayerLife : MonoBehaviour
 
         rb.bodyType = RigidbodyType2D.Dynamic;
 
+        foreach (GameObject enemy in enemies)
+        {
+            BoxCollider2D enemyBoxCollider = enemy.GetComponent<BoxCollider2D>();
+            enemyBoxCollider.enabled = true;
+        }
+
 
         anim.SetInteger("state", (int)MovementState.idle);
 
@@ -86,6 +109,6 @@ public class PlayerLife : MonoBehaviour
 
         anim.SetBool("isAlive", true);
         isAlive = true;
-      
+
     }
 }
