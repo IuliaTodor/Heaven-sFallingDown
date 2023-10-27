@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneWarp : MonoBehaviour
 {
     public Vector2 direction;
+    public int pos;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,17 @@ public class SceneWarp : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Toca el trigger");
-        Debug.Log(GameManager.instance.IsUnityNull());
-
-        if (GameManager.instance != null)
+        if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("direction: " + direction);
-            GameManager.instance.SceneChange(direction);
+            Debug.Log("Toca el trigger");
+            Debug.Log(GameManager.instance.IsUnityNull());
+
+            if (GameManager.instance != null)
+            {
+                Debug.Log("direction: " + direction);
+                GameManager.instance.pos = pos;
+                GameManager.instance.SceneChange(direction);
+            }
         }
     }
 }

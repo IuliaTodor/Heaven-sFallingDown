@@ -13,13 +13,13 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator anim;
     private PlayerLife playerLife;
+    public static PlayerMovement instance;
 
     [SerializeField] public float moveSpeed = 7f;
     [SerializeField] private float gravity = 3f;
     [SerializeField] public bool isFlippedY;
     [SerializeField] public bool isFlippedX;
-    [SerializeField] private AudioSource gravitySoundEffect;
-    public static PlayerMovement instance;
+    
 
     private float directionX = 0f;
     private bool grounded;
@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
             //GetAxis vuelve a 0 gradualmente, GetAxisRaw vuelve a 0 inmediatamente
             //Solo creamos esta variable aquí porque no la necesitamos en otro sitio que no sea update
             directionX = Input.GetAxisRaw("Horizontal");
+
             rb.velocity = new Vector2(directionX * moveSpeed, rb.velocity.y);
         }
 
@@ -80,8 +81,9 @@ public class PlayerMovement : MonoBehaviour
 
             rb.gravityScale *= -1f;
             spriteRenderer.flipY = !spriteRenderer.flipY;
-            gravitySoundEffect.Play();
+            //gravitySoundEffect.Play();
 
+            FindObjectOfType<AudioManager>().Play("GravityChange");
         }
 
         UpdateAnimationState();

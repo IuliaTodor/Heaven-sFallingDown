@@ -7,7 +7,14 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadGame()
     {
-        SceneManager.LoadSceneAsync("Scene(0,0)");
+        SceneManager.LoadSceneAsync("0,0");
+        FindObjectOfType<AudioManager>().StopPlaying("MainMenu");
+        FindObjectOfType<AudioManager>().Play("BackgroundMusic");
+    }
+
+    public void PlaySound()
+    {
+        FindObjectOfType<AudioManager>().Play("MenuClick");
     }
 
     public void QuitGame()
