@@ -13,8 +13,6 @@ public class PlayerLife : MonoBehaviour
     private PlayerMovement pm;
     private GameObject spawnPoint;
     [SerializeField] AnimationClip deathAnim;
-
-    [SerializeField] private AudioSource deathSoundEffect;
     private enum MovementState
     {
         idle //Idle = 0. Walk = 1. gravity = 2. midAir = 3
@@ -74,7 +72,7 @@ public class PlayerLife : MonoBehaviour
 
     public void Die()
     {
-        deathSoundEffect.Play();
+        FindObjectOfType<AudioManager>().Play("Die");
 
         isAlive = false;
         rb.velocity = Vector2.zero;

@@ -1394,11 +1394,17 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 1
   - name: Die
-    clip: {fileID: 8300000, guid: 3af5ec2b526e18645b212c9d177669d3, type: 3}
+    clip: {fileID: 8300000, guid: a0e271d68da958a4b8dfdc1e6cbe6ebf, type: 3}
     volume: 0.56
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: FinalSong
+    clip: {fileID: 8300000, guid: 787644e7a71899346951d784fb541dd1, type: 3}
+    volume: 0.701
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
   - name: MenuClick
     clip: {fileID: 8300000, guid: 5b25f761640bfe248aefe6a4e100590c, type: 3}
     volume: 0.701

@@ -31,12 +31,4 @@ public class PlayerAimProjectile : MonoBehaviour
             Destroy(gameObject); // Destroy the GameObject
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
-        {
-            playerLife.Die();
-        }
-    }
 }

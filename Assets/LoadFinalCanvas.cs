@@ -10,8 +10,11 @@ public class LoadFinalCanvas : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+             FindObjectOfType<AudioManager>().StopPlaying("BackgroundMusic");
+            FindObjectOfType<AudioManager>().Play("FinalSong");
             Time.timeScale = 0f;
             finishMenu.SetActive(true);
+           
         }
 
     }

@@ -8,17 +8,27 @@ public class FinalMenu : MonoBehaviour
 {
     public GameObject finishMenu;
 
+    private void Update()
+    {
+
+    }
     public void Restart()
     {
         finishMenu.SetActive(false);
         Time.timeScale = 1f;
         SceneManager.LoadScene("0,0");
+        FindObjectOfType<AudioManager>().StopPlaying("FinalSong");
+        FindObjectOfType<AudioManager>().Play("BackgroundMusic");
     }
 
     public void Menu()
     {
         finishMenu.SetActive(false);
         Time.timeScale = 1f;
+        FindObjectOfType<AudioManager>().StopPlaying("FinalSong");
+        FindObjectOfType<AudioManager>().Play("MainMenu");
         SceneManager.LoadScene("MainMenu");
+       
+
     }
 }
