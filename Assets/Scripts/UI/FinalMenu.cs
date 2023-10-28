@@ -8,10 +8,6 @@ public class FinalMenu : MonoBehaviour
 {
     public GameObject finishMenu;
 
-    private void Update()
-    {
-
-    }
     public void Restart()
     {
         finishMenu.SetActive(false);

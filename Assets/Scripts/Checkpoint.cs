@@ -7,8 +7,8 @@ public class Checkpoint : MonoBehaviour
     private PlayerLife playerLife;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
+    //Para cambiar el sprite según si has interactuado con el checkpoint
     public Sprite brown, golden;
-    // Start is called before the first frame update
     void Start()
     {
         playerLife = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLife>();

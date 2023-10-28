@@ -18,8 +18,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float moveSpeed = 7f;
     [SerializeField] private float gravity = 3f;
     [SerializeField] public bool isFlippedY;
-    [SerializeField] public bool isFlippedX;
-    
 
     private float directionX = 0f;
     private bool grounded;

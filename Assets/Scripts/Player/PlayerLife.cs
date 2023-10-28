@@ -13,10 +13,6 @@ public class PlayerLife : MonoBehaviour
     private PlayerMovement pm;
     private GameObject spawnPoint;
     [SerializeField] AnimationClip deathAnim;
-    private enum MovementState
-    {
-        idle //Idle = 0. Walk = 1. gravity = 2. midAir = 3
-    }
 
     private bool isAlive = true;
 
@@ -80,6 +76,7 @@ public class PlayerLife : MonoBehaviour
         anim.SetBool("isAlive", false);
         anim.SetTrigger("death");
 
+        //Para que el collider de los enemigos desaparezca y así no pueda haber dos enemigos atacando a la vez al jugador
         foreach (GameObject enemy in enemies)
         {
             BoxCollider2D enemyBoxCollider = enemy.GetComponent<BoxCollider2D>();
@@ -88,8 +85,6 @@ public class PlayerLife : MonoBehaviour
 
         StartCoroutine(Respawn(1.5f));
     }
-
-
 
     IEnumerator Respawn(float duration)
     {
@@ -120,8 +115,6 @@ public class PlayerLife : MonoBehaviour
         }
 
         transform.position = respawnPosition;
-
-        anim.SetInteger("state", (int)MovementState.idle);
 
         sr.enabled = true;
         anim.enabled = true;
