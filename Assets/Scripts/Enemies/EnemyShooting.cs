@@ -13,14 +13,12 @@ public class EnemyShooting : MonoBehaviour
     private GameObject player;
     private PlayerLife playerLife;
 
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerLife = player.GetComponent<PlayerLife>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
@@ -28,6 +26,8 @@ public class EnemyShooting : MonoBehaviour
         if (timer > maxTime)
         {
             timer = 0;
+
+            //Así no dispara si el jugador está muriendo
             if(playerLife.GetIsPlayerAlive())
             {
                 Shoot();

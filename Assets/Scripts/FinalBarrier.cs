@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class FinalBarrier : MonoBehaviour
 {
-    private GameObject player;
-    private ItemCollector collector;
     private SpriteRenderer sr;
     private BoxCollider2D bc;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("player");
-        collector = player.GetComponent<ItemCollector>();
         sr= GetComponent<SpriteRenderer>();
         bc = GetComponent<BoxCollider2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //La barrera desaparece si el jugador tiene los CDs necesarios
         if(GameManager.instance.CDs >= 5)
         {
             bc.enabled= false;

@@ -6,17 +6,13 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     private Vector2 checkpointPos;
+    private Vector2 defaultRespawnPos;
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
     private PlayerMovement pm;
+    private GameObject spawnPoint;
     [SerializeField] AnimationClip deathAnim;
-
-    [SerializeField] private AudioSource deathSoundEffect;
-    private enum MovementState
-    {
-        idle //Idle = 0. Walk = 1. gravity = 2. midAir = 3
-    }
 
     private bool isAlive = true;
 
@@ -36,6 +32,17 @@ public class PlayerLife : MonoBehaviour
         pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
         enemies = GameObject.FindGameObjectsWithTag("Daño");
+
+        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+        if (spawnPoint != null)
+        {
+            defaultRespawnPos = spawnPoint.transform.position; 
+        }
+        else
+        {
+            Debug.LogError("SpawnPoint not found!");
+            defaultRespawnPos = transform.position;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -61,7 +68,7 @@ public class PlayerLife : MonoBehaviour
 
     public void Die()
     {
-        deathSoundEffect.Play();
+        FindObjectOfType<AudioManager>().Play("Die");
 
         isAlive = false;
         rb.velocity = Vector2.zero;
@@ -69,6 +76,7 @@ public class PlayerLife : MonoBehaviour
         anim.SetBool("isAlive", false);
         anim.SetTrigger("death");
 
+        //Para que el collider de los enemigos desaparezca y así no pueda haber dos enemigos atacando a la vez al jugador
         foreach (GameObject enemy in enemies)
         {
             BoxCollider2D enemyBoxCollider = enemy.GetComponent<BoxCollider2D>();
@@ -77,8 +85,6 @@ public class PlayerLife : MonoBehaviour
 
         StartCoroutine(Respawn(1.5f));
     }
-
-
 
     IEnumerator Respawn(float duration)
     {
@@ -97,8 +103,18 @@ public class PlayerLife : MonoBehaviour
             enemyBoxCollider.enabled = true;
         }
 
+        Vector2 respawnPosition;
 
-        anim.SetInteger("state", (int)MovementState.idle);
+        if (checkpointPos != Vector2.zero)
+        {
+            respawnPosition = checkpointPos;
+        }
+        else
+        {
+            respawnPosition = defaultRespawnPos;
+        }
+
+        transform.position = respawnPosition;
 
         sr.enabled = true;
         anim.enabled = true;

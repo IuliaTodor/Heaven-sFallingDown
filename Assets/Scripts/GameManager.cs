@@ -6,10 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Vector2 sceneChangeVector;
-
     public static GameManager instance;
     public int CDs;
-
     public int pos;
 
     private void Awake()
@@ -19,10 +17,6 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }       
-        else
-        {
-            Debug.Log("Más de un gm en escena");
-        }
      }
 
     private void Start()

@@ -10,24 +10,19 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Vector2 maxPosition;
     [SerializeField] private Vector2 minPosition;
-    // Start is called before the first frame update
 
     private void Awake()
     {
-        // Ensure that there's only one instance of the camera
         if (instance == null)
         {
             instance = this;
         }
         else if (instance != this)
         {
-            Destroy(this.gameObject); // Destroy any duplicate instances
+            Destroy(this.gameObject);
             return;
         }
-
         target = GameObject.FindWithTag("Player");
-
-        //DontDestroyOnLoad(this.gameObject); // Keep this object when loading new scenes
     }
     void Start()
     {
@@ -47,6 +42,7 @@ public class CameraMovement : MonoBehaviour
             {
                 Vector3 targetPosition = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
 
+                //Establece límites para los bordes de la cámara
                 targetPosition.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
                 targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
                 //Lerp (linear interpolation) calcula la distancia entre dos puntos y mueve el primer punto un porcentaje de esa distancia
