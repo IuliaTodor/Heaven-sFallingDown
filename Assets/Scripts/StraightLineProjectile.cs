@@ -5,7 +5,6 @@ using UnityEngine;
 public class StraightLineProjectile : MonoBehaviour
 {
     private GameObject player;
-    private PlayerLife playerLife;
     private Rigidbody2D rb;
     [SerializeField] private float speed = 5;
     private float startTime;
@@ -16,7 +15,6 @@ public class StraightLineProjectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
-        playerLife = player.GetComponent<PlayerLife>();
 
         rb.velocity = new Vector2(0, -speed);
         startTime = Time.time;

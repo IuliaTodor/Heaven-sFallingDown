@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     private Vector2 checkpointPos;
+    private Vector2 defaultRespawnPos;
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
     private PlayerMovement pm;
+    private GameObject spawnPoint;
     [SerializeField] AnimationClip deathAnim;
 
     [SerializeField] private AudioSource deathSoundEffect;
@@ -36,6 +38,17 @@ public class PlayerLife : MonoBehaviour
         pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
         enemies = GameObject.FindGameObjectsWithTag("Daño");
+
+        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+        if (spawnPoint != null)
+        {
+            defaultRespawnPos = spawnPoint.transform.position; 
+        }
+        else
+        {
+            Debug.LogError("SpawnPoint not found!");
+            defaultRespawnPos = transform.position;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -97,6 +110,18 @@ public class PlayerLife : MonoBehaviour
             enemyBoxCollider.enabled = true;
         }
 
+        Vector2 respawnPosition;
+
+        if (checkpointPos != Vector2.zero)
+        {
+            respawnPosition = checkpointPos;
+        }
+        else
+        {
+            respawnPosition = defaultRespawnPos;
+        }
+
+        transform.position = respawnPosition;
 
         anim.SetInteger("state", (int)MovementState.idle);
 
