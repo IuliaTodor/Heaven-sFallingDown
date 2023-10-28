@@ -10,7 +10,6 @@ public class PlayerLife : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
-    private PlayerMovement pm;
     private GameObject spawnPoint;
     [SerializeField] AnimationClip deathAnim;
 
@@ -28,8 +27,6 @@ public class PlayerLife : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         checkpointPos = transform.position;
-
-        pm = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
         enemies = GameObject.FindGameObjectsWithTag("Daño");
 
