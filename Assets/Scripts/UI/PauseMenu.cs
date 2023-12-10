@@ -8,8 +8,16 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public static PauseMenu instance;
 
-    // Update is called once per frame
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -17,11 +25,13 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
+                FindObjectOfType<AudioManager>().Play("ClosePauseMenu");
             }
 
             else
             {
                 Pause();
+             
             }
         }
     }
@@ -31,6 +41,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        FindObjectOfType<AudioManager>().Play("ClosePauseMenu");
     }
 
     void Pause()
@@ -38,10 +49,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        FindObjectOfType<AudioManager>().Play("OpenPauseMenu");
     }
 
     public void Quit()
     {
+        FindObjectOfType<AudioManager>().Play("QuitGame");
         Application.Quit();
     }
 }

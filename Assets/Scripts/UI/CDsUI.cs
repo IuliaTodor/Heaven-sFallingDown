@@ -11,6 +11,7 @@ public class CDsUI : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         else
@@ -18,7 +19,7 @@ public class CDsUI : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+       
     }
 
     private void Update()

@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     public int CDs;
     public int pos;
 
+    public GameObject spawnPoint;
+    public Vector2 defaultRespawnPos;
+
+
     private void Awake()
     {
         if(instance == null)
@@ -37,6 +41,27 @@ public class GameManager : MonoBehaviour
         
         Vector2 newSceneVector = new Vector2(sceneChangeVector.x + dir.x, sceneChangeVector.y + dir.y);
         string str = "" + Mathf.Round(newSceneVector.x) + "," + Mathf.Round(newSceneVector.y);
+
+        //Activa esto tras cargar la siguiente escena
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
         SceneManager.LoadScene(str);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Así no se activa múltiples veces
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+
+        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPointL");
+
+        if (spawnPoint != null)
+        {
+            defaultRespawnPos = spawnPoint.transform.position;
+        }
+        else
+        {
+            defaultRespawnPos = transform.position;
+        }
     }
 }

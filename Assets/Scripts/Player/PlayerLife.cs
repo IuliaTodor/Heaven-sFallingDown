@@ -6,16 +6,17 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     private Vector2 checkpointPos;
-    private Vector2 defaultRespawnPos;
+    //private Vector2 defaultRespawnPos;
+
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
-    private GameObject spawnPoint;
+    private BoxCollider2D bc;
+
     [SerializeField] AnimationClip deathAnim;
 
     private bool isAlive = true;
 
-    private GameObject[] enemies;
     public bool GetIsPlayerAlive()
     {
         return isAlive;
@@ -25,21 +26,10 @@ public class PlayerLife : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        bc = GetComponent<BoxCollider2D>();
 
-        checkpointPos = transform.position;
 
-        enemies = GameObject.FindGameObjectsWithTag("Daño");
-
-        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
-        if (spawnPoint != null)
-        {
-            defaultRespawnPos = spawnPoint.transform.position; 
-        }
-        else
-        {
-            Debug.LogError("SpawnPoint not found!");
-            defaultRespawnPos = transform.position;
-        }
+        checkpointPos = Vector2.zero;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,15 +60,10 @@ public class PlayerLife : MonoBehaviour
         isAlive = false;
         rb.velocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Static;
+        bc.enabled = false;
+
         anim.SetBool("isAlive", false);
         anim.SetTrigger("death");
-
-        //Para que el collider de los enemigos desaparezca y así no pueda haber dos enemigos atacando a la vez al jugador
-        foreach (GameObject enemy in enemies)
-        {
-            BoxCollider2D enemyBoxCollider = enemy.GetComponent<BoxCollider2D>();
-            enemyBoxCollider.enabled = false;
-        }
 
         StartCoroutine(Respawn(1.5f));
     }
@@ -94,12 +79,6 @@ public class PlayerLife : MonoBehaviour
 
         rb.bodyType = RigidbodyType2D.Dynamic;
 
-        foreach (GameObject enemy in enemies)
-        {
-            BoxCollider2D enemyBoxCollider = enemy.GetComponent<BoxCollider2D>();
-            enemyBoxCollider.enabled = true;
-        }
-
         Vector2 respawnPosition;
 
         if (checkpointPos != Vector2.zero)
@@ -108,13 +87,14 @@ public class PlayerLife : MonoBehaviour
         }
         else
         {
-            respawnPosition = defaultRespawnPos;
+            respawnPosition = GameManager.instance.defaultRespawnPos;
         }
 
         transform.position = respawnPosition;
 
         sr.enabled = true;
         anim.enabled = true;
+        bc.enabled = true;
         sr.flipY = false;
         rb.gravityScale = 3;
 

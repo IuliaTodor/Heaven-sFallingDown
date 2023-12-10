@@ -7,12 +7,13 @@ using TMPro;
 public class ItemCollector : MonoBehaviour
 {
     [SerializeField] private TMP_Text CDsText;
-    [SerializeField] private AudioSource collectSoundEffect;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Collectable"))
+        if (collision.gameObject.CompareTag("Collectable"))
         {
+
             FindObjectOfType<AudioManager>().Play("ItemCollect");
             Destroy(collision.gameObject);
 
@@ -22,6 +23,8 @@ public class ItemCollector : MonoBehaviour
             {
                 CDsText.text = "" + GameManager.instance.CDs;
             }
+
         }
+
     }
 }

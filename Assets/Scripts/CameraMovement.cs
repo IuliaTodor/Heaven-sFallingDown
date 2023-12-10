@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public static CameraMovement instance;
-    [SerializeField] private GameObject target;
+    private GameObject target;
     //Cómo de rápido se mueve la cámara hacia el jugador
     [SerializeField] private float speed;
     [SerializeField] private Vector2 maxPosition;

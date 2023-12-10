@@ -21,6 +21,7 @@ public class Checkpoint : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             playerLife.UpdateCheckpoint(transform.position);
+            FindObjectOfType<AudioManager>().Play("Checkpoint");
             spriteRenderer.sprite = golden;
             boxCollider.enabled = false;
         }
