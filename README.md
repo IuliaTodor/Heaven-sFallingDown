@@ -1,14 +1,11 @@
 # Heaven's Falling Down
 
-Controles: 
+My first videogame made in Unity. It was made for a school project in which you had to make a VVVVVV clone.
 
-Moverse: ASDW o flechas de dirección
-Cambiar Gravedad: Espacio
-Pausar: ESC
+You play as Enrico Pucci from Jojo's Bizarre Adventure. Your main goal is to get five discs in order to unlock a barrier and save your pet: Cappidio Barando.
 
-El objetivo del juego es conseguir 5 discos y llegar al final del juego. Si no consigues los discos no podrás acabarlo.
-Como tal no hay pantalla de derrota, solo checkpoints.
+Controls: 
 
-Nota: realmente recomiendo tocar los checkpoint. Hay un bug que no pude solucionar en la escena 2,0 (donde vas en un camino hacia abajo
-y hay un callejón sin salida con un disco). Este hace que si no tocas el checkpoint y mueres es posible que spawnees en una zona donde
-el jugador caerá de forma infinita.
+Move: ASDW or directional arrows
+Change Gravity: Space
+Pause: ESC
